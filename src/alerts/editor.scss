@@ -1,22 +1,23 @@
 /**
- * #.# Common SCSS
- *
- * Can include things like variables and mixins
- * that are used across the project.
-*/
-/**
  * #.# Editor Styles
  *
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
+
+.wp-block-dima-block-basic-alerts  {
+
+}
+
 .alert {
   padding: 15px;
   margin-bottom: 20px;
   border: 1px solid transparent;
-  border-radius: 4px; }
+  border-radius: 4px;
+}
 
-.alert-success {
+.alert-success{
   color: #3c763d;
   background-color: #dff0d8;
-  border-color: #d6e9c6; }
+  border-color: #d6e9c6;
+}

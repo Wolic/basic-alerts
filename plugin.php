@@ -1,15 +1,15 @@
 <?php
 /**
- * Plugin Name: basic-alerts — CGB Gutenberg Block Plugin
- * Plugin URI: https://github.com/ahmadawais/create-guten-block/
- * Description: basic-alerts — is a Gutenberg plugin created via create-guten-block.
- * Author: mrahmadawais, maedahbatool
- * Author URI: https://AhmadAwais.com/
+ * Plugin Name: Basic Alerts
+ * Plugin URI: https://dimitri-wolf.de
+ * Description: basic-alerts — is a Gutenberg plugin for bootstrap like alerts
+ * Author: Dima Wolf
+ * Author URI: https://dimitri-wolf.de
  * Version: 1.0.0
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  *
- * @package CGB
+ * @package DIMA
  */
 
 // Exit if accessed directly.
