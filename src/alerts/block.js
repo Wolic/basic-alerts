@@ -11,7 +11,7 @@ import './style.scss';
 
 const {__} = wp.i18n; // Import __() from wp.i18n
 const {registerBlockType} = wp.blocks; // Import registerBlockType() from wp.blocks
-const {RichText, InspectorControls} = wp.editor;
+const {RichText, InspectorControls, BlockControls, AlignmentToolbar} = wp.editor;
 const {SelectControl, PanelBody, PanelRow} = wp.components;
 
 /**
@@ -43,6 +43,10 @@ registerBlockType('dima/block-basic-alerts', {
         content: {
             type: "string",
             default: "Alert Text"
+        },
+        alignment: {
+            type: "string",
+            default: "none"
         }
     },
 
@@ -59,7 +63,7 @@ registerBlockType('dima/block-basic-alerts', {
      */
     edit: (props) => {
         const {setAttributes} = props;
-        const {alertStyle, content} = props.attributes;
+        const {alertStyle, content, alignment} = props.attributes;
         const alertClassName = "basic-alerts-content alert alert-" + alertStyle;
 
         // Creates a <p class='wp-block-cgb-block-basic-alerts'></p>.
@@ -84,12 +88,22 @@ registerBlockType('dima/block-basic-alerts', {
                             />
                         </PanelBody>
                     </PanelRow>
-
                 </InspectorControls>
-                <div className={props.className }>
+
+                <BlockControls>
+                    <AlignmentToolbar
+                        value={alignment}
+                        onChange={(newAlignment) => {
+                            setAttributes({alignment: newAlignment})
+                        }}
+                    />
+                </BlockControls>
+
+                <div className={props.className}>
                     <RichText
                         tagName="p"
                         className={alertClassName}
+                        style={{textAlign: alignment}}
                         value={content}
                         onChange={(newContent) => setAttributes({content: newContent})}
                         placeholder={__('Alert Text')}
@@ -111,13 +125,14 @@ registerBlockType('dima/block-basic-alerts', {
      * @returns {Mixed} JSX Frontend HTML.
      */
     save: (props) => {
-        const {alertStyle, content} = props.attributes;
+        const {alertStyle, content, alignment} = props.attributes;
         const alertClassName = "basic-alerts-content alert alert-" + alertStyle;
         return (
             <div className={props.className}>
                 <RichText.Content
                     tagName="p"
                     className={alertClassName}
+                    style={{textAlign: alignment}}
                     value={content}
                 />
             </div>
