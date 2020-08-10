@@ -11,7 +11,8 @@ import './style.scss';
 
 const {__} = wp.i18n; // Import __() from wp.i18n
 const {registerBlockType} = wp.blocks; // Import registerBlockType() from wp.blocks
-const {RichText} = wp.editor;
+const {RichText, InspectorControls} = wp.editor;
+const {SelectControl, PanelBody, PanelRow} = wp.components;
 
 /**
  * Register: aa Gutenberg Block.
@@ -57,18 +58,43 @@ registerBlockType('dima/block-basic-alerts', {
      * @returns {Mixed} JSX Component.
      */
     edit: (props) => {
-        const { setAttributes } = props;
-        const { alertStyle, content } = props.attributes;
+        const {setAttributes} = props;
+        const {alertStyle, content} = props.attributes;
+        const alertClassName = "basic-alerts-content alert alert-" + alertStyle;
+
         // Creates a <p class='wp-block-cgb-block-basic-alerts'></p>.
         return (
-            <div className={props.className + " alert alert-" + alertStyle}>
-				<RichText
-                tagName="p"
-                className="basic-alerts-content"
-                value={content}
-                onChange={ ( newContent ) => setAttributes({content: newContent})}
-                placeholder={__('Alert Text')}
-                />
+            <div>
+                <InspectorControls>
+                    <PanelRow>
+                        <PanelBody>
+                            <SelectControl
+                                label={__('Choose alert style', 'dima-basic-alerts')}
+                                value={alertStyle}
+                                options=
+                                    {[
+                                        {value: 'success', label: 'Success'},
+                                        {value: 'info', label: 'Info'},
+                                        {value: 'warning', label: 'Warning'},
+                                        {value: 'danger', label: 'Danger'},
+                                    ]}
+                                onChange={(newValue) => {
+                                    setAttributes({alertStyle: newValue})
+                                }}
+                            />
+                        </PanelBody>
+                    </PanelRow>
+
+                </InspectorControls>
+                <div className={props.className }>
+                    <RichText
+                        tagName="p"
+                        className={alertClassName}
+                        value={content}
+                        onChange={(newContent) => setAttributes({content: newContent})}
+                        placeholder={__('Alert Text')}
+                    />
+                </div>
             </div>
         );
     },
@@ -86,11 +112,12 @@ registerBlockType('dima/block-basic-alerts', {
      */
     save: (props) => {
         const {alertStyle, content} = props.attributes;
+        const alertClassName = "basic-alerts-content alert alert-" + alertStyle;
         return (
-            <div className={props.className + " alert alert-" + alertStyle}>
+            <div className={props.className}>
                 <RichText.Content
                     tagName="p"
-                    className="basic-alerts-content"
+                    className={alertClassName}
                     value={content}
                 />
             </div>
