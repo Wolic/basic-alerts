@@ -28,10 +28,10 @@ const {SelectControl, PanelBody, PanelRow} = wp.components;
  *                             registered; otherwise `undefined`.
  */
 registerBlockType('dima/block-basic-alerts', {
-    // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-    title: __('Basic Alerts'), // Block title.
-    icon: 'admin-comments', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
-    category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+
+    title: __('Basic Alerts'),
+    icon: 'admin-comments',
+    category: 'common',
     keywords: [
         __('Basic Alerts'),
     ],
@@ -66,7 +66,6 @@ registerBlockType('dima/block-basic-alerts', {
         const {alertStyle, content, alignment} = props.attributes;
         const alertClassName = "basic-alerts-content alert alert-" + alertStyle;
 
-        // Creates a <p class='wp-block-cgb-block-basic-alerts'></p>.
         return (
             <div>
                 <InspectorControls>
