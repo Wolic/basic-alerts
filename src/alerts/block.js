@@ -9,13 +9,13 @@
 import './editor.scss';
 import './style.scss';
 
-const {__} = wp.i18n; // Import __() from wp.i18n
-const {registerBlockType} = wp.blocks; // Import registerBlockType() from wp.blocks
+const {__} = wp.i18n;
+const {registerBlockType} = wp.blocks;
 const {RichText, InspectorControls, BlockControls, AlignmentToolbar} = wp.editor;
 const {SelectControl, PanelBody, PanelRow} = wp.components;
 
 /**
- * Register: aa Gutenberg Block.
+ * Register: Basic Alerts Gutenberg Block.
  *
  * Registers a new block provided a unique name and an object defining its
  * behavior. Once registered, the block is made editor as an option to any
