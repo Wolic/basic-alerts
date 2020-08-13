@@ -1,3 +1,7 @@
+# Basic Alerts for WordPress
+
+With this small Gutenberg Plugin you can add Bootsrap-like alert blocks into posts and pages.
+
 This project was bootstrapped with [Create Guten Block](https://github.com/ahmadawais/create-guten-block).
 
 Below you will find some information on how to run scripts.
