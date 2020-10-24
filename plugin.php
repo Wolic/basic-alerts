@@ -1,7 +1,6 @@
 <?php
 /**
  * Plugin Name: Basic Alerts
- * Plugin URI: https://dimitri-wolf.de
  * Description: basic-alerts — is a Gutenberg plugin for bootstrap like alerts
  * Author: Dima Wolf
  * Author URI: https://dimitri-wolf.de
